@@ -8,6 +8,14 @@ const InputText = styled.input`
   width: 100%;
 `;
 
+async function getRandomUsers() {
+  try {
+    const data = await axios.get("/api/users/random_user?size=100");
+    return data;
+  } catch (err) {
+    console.log("error: ", err);
+  }
+}
 const debounce = (func, timeout = 1000) => {
   let timer;
   return (...args) => {
